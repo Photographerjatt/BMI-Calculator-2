@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'input_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'screens/welcome_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
