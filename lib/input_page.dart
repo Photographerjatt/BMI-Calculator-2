@@ -8,6 +8,7 @@ import 'bmi_calculation.dart';
 
 //This Page Contains the Scaffold
 class InputPage extends StatefulWidget {
+  static String id='input_page';
   @override
   State<InputPage> createState() => _InputPageState();
 }

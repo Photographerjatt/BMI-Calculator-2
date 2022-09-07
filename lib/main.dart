@@ -1,3 +1,5 @@
+import 'package:bmi_calculator_2/screens/login_screen.dart';
+import 'package:bmi_calculator_2/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
 import 'input_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,7 +19,13 @@ class BMICalculator extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xff1e1e2f),
       ),
       //Input Page Contains the Scaffold
-      home: InputPage(),
+      initialRoute: InputPage.id,
+      routes: {
+        WelcomeScreen.id: (context) => WelcomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        RegistrationScreen.id: (context) => RegistrationScreen(),
+        InputPage.id: (context) => InputPage(),
+      },
     );
   }
 }
