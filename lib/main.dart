@@ -19,7 +19,7 @@ class BMICalculator extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xff1e1e2f),
       ),
       //Input Page Contains the Scaffold
-      initialRoute: InputPage.id,
+      initialRoute: WelcomeScreen.id,
       routes: {
         WelcomeScreen.id: (context) => WelcomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),
