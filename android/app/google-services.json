@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "427249914341",
-    "project_id": "bmi-calculator-7cf33",
-    "storage_bucket": "bmi-calculator-7cf33.appspot.com"
+    "project_number": "697447415679",
+    "project_id": "bmi-calculator-92601",
+    "storage_bucket": "bmi-calculator-92601.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:427249914341:android:de977d38716942ad805f0c",
+        "mobilesdk_app_id": "1:697447415679:android:a1a4315670d49018cc244a",
         "android_client_info": {
           "package_name": "com.bmi_calculator_nirwal"
         }
       },
       "oauth_client": [
         {
-          "client_id": "427249914341-5adh6hf5rmtnjr59thlmq6hasldmi68d.apps.googleusercontent.com",
+          "client_id": "697447415679-qi2p3tuphsgetr91pkg4033aa56kvtbf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bmi_calculator_nirwal",
+            "certificate_hash": "2d3d0b946f840f21d6dfe711a7a582488dd1b115"
+          }
+        },
+        {
+          "client_id": "697447415679-oh6v74tesg442m1589rid66v11rjd93n.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCkXfJS5lnSxZy2oU0ptdpusNOxTpgJk8I"
+          "current_key": "AIzaSyAQ-B3q_-N7RYXhxzO3qZS4eTHrWVCnAg8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "427249914341-5adh6hf5rmtnjr59thlmq6hasldmi68d.apps.googleusercontent.com",
+              "client_id": "697447415679-oh6v74tesg442m1589rid66v11rjd93n.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

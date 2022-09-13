@@ -1,8 +1,8 @@
 import 'package:bmi_calculator_2/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Background Box/Background_Box.dart';
-import 'calculate_button.dart';
+import '../Background Box/Background_Box.dart';
+import '../calculate_button.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 

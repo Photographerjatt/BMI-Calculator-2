@@ -1,9 +1,6 @@
 import 'package:bmi_calculator_2/screens/login_screen.dart';
-import 'package:bmi_calculator_2/screens/registration_screen.dart';
 import 'package:flutter/material.dart';
-import 'input_page.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'screens/welcome_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,13 +16,9 @@ class BMICalculator extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xff1e1e2f),
       ),
       //Input Page Contains the Scaffold
-      initialRoute: WelcomeScreen.id,
-      routes: {
-        WelcomeScreen.id: (context) => WelcomeScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-        RegistrationScreen.id: (context) => RegistrationScreen(),
-        InputPage.id: (context) => InputPage(),
-      },
+      debugShowCheckedModeBanner: false,
+
+      home: LoginScreen(),
     );
   }
 }

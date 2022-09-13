@@ -1,106 +1,119 @@
+import 'package:bmi_calculator_2/screens/input_page.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:bmi_calculator_2/controller/firebase_service.dart';
+import 'package:bmi_calculator_2/Background Box/widgets.dart';
 
-class LoginScreen extends StatefulWidget {
-  static String id='login_screen';
-  @override
-  _LoginScreenState createState() => _LoginScreenState();
-}
+final User? user = FirebaseAuth.instance.currentUser;
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    return (user!=null)? InputPage():
+    GoogleScreen();
+  }
+}
+
+class GoogleScreen extends StatelessWidget {
+  const GoogleScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            //image for login screen
-            SizedBox(
-              height: 48.0,
-            ),
-            TextField(
-              keyboardType: TextInputType.emailAddress,
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black),
-              onChanged: (value) {
-                //Do something with the user input.
-              },
-              decoration: InputDecoration(
-                hintText: 'Enter your email',
-                hintStyle: TextStyle(color: Colors.black),
-                contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide:
-                  BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide:
-                  BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
+        resizeToAvoidBottomInset: false,
+        body: Column(
+          children: [
+
+            //upper container
+            Expanded(
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    //1
+                    Image(
+                      image: AssetImage('image/playstore.png'),
+                      height: height/3,
+                    ),
+
+                    //2
+                    FitText("BMI Calculator", 40, Colors.white, FontWeight.bold, 0),
+
+                    SizedBox(
+                      height: height/68,
+                    ),
+
+                    //3
+                    FitText("Calculate your BMI", 20, Colors.grey, FontWeight.normal,0),
+
+
+
+                  ],
                 ),
               ),
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-            TextField(
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.black),
-              onChanged: (value) {
-                //Do something with the user input.
-              },
-              decoration: InputDecoration(
-                hintText: 'Enter your password.',
-                hintStyle: TextStyle(color: Colors.black),
-                contentPadding:
-                EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide:
-                  BorderSide(color: Colors.lightBlueAccent, width: 1.0),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide:
-                  BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                ),
+
+
+            //2 lower container
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: width/15,vertical:height/25,),
+              child: Column(
+                children: [
+                  //1
+                  ElevatedButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        //1
+                        Image(
+                          image: AssetImage('image/google.png'),
+                          height: height/25,
+                        ),
+
+                        //2
+                        SizedBox(
+                          width: width/20,
+                        ),
+
+                        //3
+                        FitText("Sign In",25,Colors.white,FontWeight.bold,0),
+                      ],
+                    ),
+                    onPressed: () async {
+                      if(user == null){
+                        FirebaseService service = new FirebaseService();
+                        try {
+
+                          await service.signInwithGoogle();
+
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>InputPage()));
+
+                        } catch(e){
+                          if(e is FirebaseAuthException){
+                            print(e);
+                          }
+                        }
+                      }
+                      else{
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>InputPage()));
+
+                      }
+
+
+                    },
+                    style: ElevatedButton.styleFrom(
+                        padding: EdgeInsets.all(width/40)
+                    ),
+                  )
+                ],
               ),
-            ),
-            SizedBox(
-              height: 24.0,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Implement login functionality.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
-            ),
+            )
           ],
-        ),
-      ),
+        )
     );
   }
 }
